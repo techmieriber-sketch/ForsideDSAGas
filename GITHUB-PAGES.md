@@ -29,3 +29,5 @@ Projektside: `https://techmieriber-sketch.github.io/ForsideDSAGas/`
 ## 5. Tjek at filen findes i repo
 
 På GitHub: **Code** → skal vise `index.html` og `Baggrundsbillede.png` i **samme** rodmappe.
+
+**Vigtigt:** Commit `Baggrundsbillede.png` sammen med `index.html` (`git add Baggrundsbillede.png`). Filen ligger i roden af DSA Gastronom-projektet efter synk — uden den fil på GitHub vises kun den mørkeblå fallback-baggrund.
