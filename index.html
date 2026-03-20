@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dansk som andetsprog for gastronomer</title>
-    <link rel="preload" href="../Baggrundsbillede.png" as="image" />
+    <link rel="preload" id="forside-bg-preload" href="" as="image" />
 
     <style>
       html {
@@ -33,11 +33,14 @@
         inset: 0;
         z-index: 0;
         overflow: hidden;
-        background-color: #0f1b24;
-        background-image: url("../Baggrundsbillede.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: #0f1b24;
+      }
+
+      .bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
 
       .page-shell {
@@ -91,30 +94,6 @@
         text-decoration: none;
       }
 
-      .quick-link {
-        display: inline-block;
-        margin: 0 auto 1rem;
-        padding: 0.5rem 0.9rem;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .quick-link:hover,
-      .quick-link:focus {
-        text-decoration: underline;
-      }
-
-      .section-title {
-        margin: 3rem 0 1rem;
-        font-size: 1.6rem;
-        text-align: center;
-        color: #fff;
-      }
-
       .categories {
         list-style: none;
         padding: 0;
@@ -162,49 +141,74 @@
   </head>
 
   <body>
-    <div class="bg-media" aria-hidden="true"></div>
+    <div class="bg-media" aria-hidden="true">
+      <img id="forside-bg-img" class="bg-image" src="" alt="" fetchpriority="high" decoding="async" />
+    </div>
+    <script>
+      (function () {
+        var FILE = "Baggrundsbillede.png";
+        function bgUrl() {
+          if (location.protocol === "file:") return "./" + FILE;
+          var p = location.pathname;
+          var last = p.split("/").pop() || "";
+          var dir =
+            last.indexOf(".") !== -1
+              ? p.slice(0, p.lastIndexOf("/") + 1) || "/"
+              : p.endsWith("/")
+                ? p
+                : p + "/";
+          if (!dir.startsWith("/")) dir = "/" + dir.replace(/^\/*/, "");
+          return location.origin + dir + FILE;
+        }
+        var u = bgUrl();
+        var pl = document.getElementById("forside-bg-preload");
+        var im = document.getElementById("forside-bg-img");
+        if (pl) pl.href = u;
+        if (im) im.src = u;
+      })();
+    </script>
 
     <div class="page-shell">
       <main class="content">
-      <section class="content-card">
-        <h1 class="page-title">Dansk som andetsprog for gastronomer</h1>
+        <section class="content-card">
+          <h1 class="page-title">Dansk som andetsprog for gastronomer</h1>
 
-        <p class="appwriter-info">
-          Du kan få alt indhold på siden læst op med AppWriter. Du kan hente AppWriter som desktop app
-          <a href="https://it-info.aarhustech.dk/da/software/generelt/appwriter" target="_blank" rel="noopener noreferrer">her</a>.
-        </p>
+          <p class="appwriter-info">
+            Du kan få alt indhold på siden læst op med AppWriter. Du kan hente AppWriter som desktop app
+            <a href="https://it-info.aarhustech.dk/da/software/generelt/appwriter" target="_blank" rel="noopener noreferrer">her</a>.
+          </p>
 
-        <p class="appwriter-info">
-          Du kan hente AppWriter Cloud
-          <a href="https://chromewebstore.google.com/detail/appwriter-cloud/lokadhdaghfjbmailhhenifjejpokche?hl=da&pli=1" target="_blank" rel="noopener noreferrer">her</a>.
-          Du kan hente AppWriter Edge Add-on
-          <a href="https://microsoftedge.microsoft.com/addons/detail/appwriter-cloud/ejkmeinadgefifnopiacgpjlkjdjhhkc?hl=en-GB#:~:text=AppWriter%20is%20able%20to%20convert%20your%20speech%20to,in%20any%20PDF%20e.g.%20homework%2C%20e-books%2C%20and%20forms." target="_blank" rel="noopener noreferrer">her</a>.
-        </p>
+          <p class="appwriter-info">
+            Du kan hente AppWriter Cloud
+            <a href="https://chromewebstore.google.com/detail/appwriter-cloud/lokadhdaghfjbmailhhenifjejpokche?hl=da&pli=1" target="_blank" rel="noopener noreferrer">her</a>.
+            Du kan hente AppWriter Edge Add-on
+            <a href="https://microsoftedge.microsoft.com/addons/detail/appwriter-cloud/ejkmeinadgefifnopiacgpjlkjdjhhkc?hl=en-GB#:~:text=AppWriter%20is%20able%20to%20convert%20your%20speech%20to,in%20any%20PDF%20e.g.%20homework%2C%20e-books%2C%20and%20forms." target="_blank" rel="noopener noreferrer">her</a>.
+          </p>
 
-        <p class="appwriter-info">
-          Log ind i AppWriter ved at vælge 'Unilogin' og herefter 'MitID'.
-        </p>
+          <p class="appwriter-info">
+            Log ind i AppWriter ved at vælge 'Unilogin' og herefter 'MitID'.
+          </p>
 
-        <ul class="categories">
-          <li><a class="category-link" href="https://youtu.be/aCQG1ovE7HA?si=eZOr6laXENfwlJB7" target="_blank" rel="noopener noreferrer">Introduktion til AppWriter</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/BroedDSAGas/" target="_blank" rel="noopener noreferrer">Brødbagning</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/DrikDSAGas/drikkevarer.html" target="_blank" rel="noopener noreferrer">Drikkevarer</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/FiskDSAGas/" target="_blank" rel="noopener noreferrer">Fisk</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/FrugtDSAGas/" target="_blank" rel="noopener noreferrer">Frugter</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/GroentDSAGas/index.html" target="_blank" rel="noopener noreferrer">Grøntsager</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/HygDSAGas/" target="_blank" rel="noopener noreferrer">Hygiejne</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/KoedDSAGas/" target="_blank" rel="noopener noreferrer">Kød</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/KrydDSAGas/index.html" target="_blank" rel="noopener noreferrer">Krydderier og krydderurter</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/KoktingDSAGas/" target="_blank" rel="noopener noreferrer">Køkkenting</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/MejDSAGas/index.html" target="_blank" rel="noopener noreferrer">Mejeriprodukter</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/MiddagDSAGas/" target="_blank" rel="noopener noreferrer">Middagsretter</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/SodDSAGas/" target="_blank" rel="noopener noreferrer">Søde sager</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/TorDSAGas/index.html" target="_blank" rel="noopener noreferrer">Tørvarer</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/AegDSAGas/index.html" target="_blank" rel="noopener noreferrer">Æg</a></li>
-          <li><a class="category-link" href="https://techmieriber-sketch.github.io/UdtaleDSAGas/" target="_blank" rel="noopener noreferrer">Udtale</a></li>
-        </ul>
-      </section>
-    </main>
+          <ul class="categories">
+            <li><a class="category-link" href="https://youtu.be/aCQG1ovE7HA?si=eZOr6laXENfwlJB7" target="_blank" rel="noopener noreferrer">Introduktion til AppWriter</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/BroedDSAGas/" target="_blank" rel="noopener noreferrer">Brødbagning</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/DrikDSAGas/drikkevarer.html" target="_blank" rel="noopener noreferrer">Drikkevarer</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/FiskDSAGas/" target="_blank" rel="noopener noreferrer">Fisk</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/FrugtDSAGas/" target="_blank" rel="noopener noreferrer">Frugter</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/GroentDSAGas/index.html" target="_blank" rel="noopener noreferrer">Grøntsager</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/HygDSAGas/" target="_blank" rel="noopener noreferrer">Hygiejne</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/KoedDSAGas/" target="_blank" rel="noopener noreferrer">Kød</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/KrydDSAGas/index.html" target="_blank" rel="noopener noreferrer">Krydderier og krydderurter</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/KoktingDSAGas/" target="_blank" rel="noopener noreferrer">Køkkenting</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/MejDSAGas/index.html" target="_blank" rel="noopener noreferrer">Mejeriprodukter</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/MiddagDSAGas/" target="_blank" rel="noopener noreferrer">Middagsretter</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/SodDSAGas/" target="_blank" rel="noopener noreferrer">Søde sager</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/TorDSAGas/index.html" target="_blank" rel="noopener noreferrer">Tørvarer</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/AegDSAGas/index.html" target="_blank" rel="noopener noreferrer">Æg</a></li>
+            <li><a class="category-link" href="https://techmieriber-sketch.github.io/UdtaleDSAGas/" target="_blank" rel="noopener noreferrer">Udtale</a></li>
+          </ul>
+        </section>
+      </main>
     </div>
   </body>
 </html>
