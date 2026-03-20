@@ -40,6 +40,10 @@ Projektet er statisk HTML og kan bruges direkte:
 1. Åbn `index.html` i en webbrowser, eller
 2. Host filerne på en webserver (fx GitHub Pages)
 
+### GitHub Pages (ForsideDSAGas)
+
+I roden af **Forside**-repoet skal `index.html` være den **fulde** forside (samme indhold som `index.html` i roden af dette samlede projekt). **Læg ikke** den lille viderestillingsside med `url=../index.html` i roden — så forsvinder forsiden på nettet, fordi `../` peger uden for sitet.
+
 ### AppWriter
 
 Indholdet kan læses op med [AppWriter](https://it-info.aarhustech.dk/da/software/generelt/appwriter). Log ind via Unilogin og MitID.
